@@ -2,7 +2,7 @@ from selenium import webdriver
 import time
 import datetime
 
-web = webdriver.Chrome('F:\\GitHub\\jobfinder\\chromedriver.exe')
+web = webdriver.Chrome('F:\\GitHub\\job-finder\\chromedriver.exe')
 
 searchStr = "backend"
 
@@ -35,12 +35,12 @@ def getpagelink(page):
     if page>maxpage:
         return False
     else:
-        return "https://www.profession.hu/allasok/"+str(page)+",0,0,backend%401%401?keywordsearch"
+        #return "https://www.profession.hu/allasok/"+str(page)+",0,0,backend%401%401?keywordsearch"
+        return "https://www.profession.hu/allasok/programozo-fejleszto/"+str(page)+",10,0,0,75,0,67@157_94@157,5"
 
 def get_max_page():
     maxpageelement = web.find_element_by_xpath(maxpageXpath)
-    link = maxpageelement.get_attribute("href")
-    maxpage = link.split(",")[0].split("/")[-1]
+    maxpage = maxpageelement.get_attribute("data-total")
     return int(maxpage)
 
 def get_jobs_on_page():
