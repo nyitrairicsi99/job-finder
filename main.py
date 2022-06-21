@@ -54,6 +54,7 @@ def get_jobs_on_page():
         company = companies[i].get_attribute('innerText')
         address = companyaddresses[i].get_attribute('innerText')
         if not((title + " | " + company) in alreadyFound):
+            alreadyFound[title + " | " + company] = True
             global max_id
             max_id = max_id + 1
             row = str(max_id) + " | 0 | " + title + " | " + company + " | " + address + " | " + link
